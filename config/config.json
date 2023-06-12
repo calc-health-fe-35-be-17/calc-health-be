@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "dietcare123",
+    "password": "skilvul123",
+    "database": "diet_care",
+    "host": "db4free.net",
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": "dietcare123",
+    "password": "skilvul123",
+    "database": "diet_care",
+    "host": "db4free.net",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "dietcare123",
+    "password": "skilvul123",
+    "database": "diet_care",
+    "host": "db4free.net",
+    "dialect": "mysql"
+  }
+}
