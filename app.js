@@ -18,16 +18,10 @@ app.use((err, req, res, next) => {
 });
 
 // Start the server
+// Use PORT provided in environment or default to 3030
 const port = process.env.PORT || 3030;
 
-// Sync the database and start the server
-sequelize
-  .sync()
-  .then(() => {
-    app.listen(port, () => {
-      console.log(`Server started on port ${port}`);
-    });
-  })
-  .catch((error) => {
-    console.error('Unable to connect to the database:', error);
-  });
+// Listen on `port` and 0.0.0.0
+app.listen(port, "0.0.0.0", function () {
+  // ...
+});
