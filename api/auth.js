@@ -30,10 +30,10 @@ router.post('/login', async (req, res) => {
 // Register
 router.post('/register', async (req, res) => {
   try {
-    const { nama, email, password, gender, berat, tinggi, umur, isAdmin } = req.body;
+    const { nama_depan, nama_belakang, email, password, gender, berat, tinggi, umur, isAdmin } = req.body;
 
     // Create a new user
-    const user = await User.create({ nama, email, password, gender, berat, tinggi, umur, isAdmin });
+    const user = await User.create({ nama_depan, nama_belakang, email, password, gender, berat, tinggi, umur, isAdmin });
 
     res.status(201).json({ user });
   } catch (error) {
