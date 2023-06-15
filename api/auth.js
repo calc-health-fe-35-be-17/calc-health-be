@@ -2,9 +2,11 @@ const express = require('express');
 const router = express.Router();
 const jwt = require('jsonwebtoken');
 const { User } = require('../models'); // Import the User model
+const cors= require('cors');
+const corsOptions= require('../cors/cors-option');
 
 // Login
-router.post('/login', async (req, res) => {
+router.post('/login',cors(corsOptions), async (req, res) => {
   const { email, password } = req.body;
 
   try {
