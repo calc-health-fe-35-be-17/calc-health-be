@@ -4,7 +4,7 @@ const { authMiddleware, adminMiddleware } = require('../middlewares/middlewares'
 const { User } = require('../models');
 
 // Get user by ID
-router.get('/:id', authMiddleware, async (req, res) => {
+router.get('/:id', async (req, res) => {
   const { id } = req.params;
 
   try {
@@ -20,7 +20,7 @@ router.get('/:id', authMiddleware, async (req, res) => {
 });
 
 // Delete user by ID
-router.delete('/:id', authMiddleware, async (req, res) => {
+router.delete('/:id',  async (req, res) => {
   const { id } = req.params;
 
   try {
@@ -37,7 +37,7 @@ router.delete('/:id', authMiddleware, async (req, res) => {
 });
 
 // Get all users
-router.get('/',authMiddleware, async (req, res) => {
+router.get('/', async (req, res) => {
   try {
     const users = await User.findAll();
     res.json(users);
