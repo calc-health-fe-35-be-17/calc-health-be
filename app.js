@@ -1,11 +1,16 @@
 const express = require('express');
 const app = express();
+const cors = require('cors');
+const corsOptions = require('./cors/cors-option');
 const authRoutes = require('./api/auth');
 const userRoutes = require('./api/users');
 const { sequelize } = require('./models'); // Import the sequelize instance
 
 // Middleware
 app.use(express.json());
+
+// allow origin
+app.use(cors(corsOptions));
 
 // Routes
 app.use('/auth', authRoutes);
