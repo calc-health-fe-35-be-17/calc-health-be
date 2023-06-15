@@ -4,6 +4,8 @@ const cors = require('cors');
 const corsOptions = require('./cors/cors-option');
 const authRoutes = require('./api/auth');
 const userRoutes = require('./api/users');
+const foodRoutes = require('./api/food');
+const cartfoodRoutes = require('./api/cartfood');
 const { sequelize } = require('./models'); // Import the sequelize instance
 
 // Middleware
@@ -15,6 +17,8 @@ app.use(cors());
 // Routes
 app.use('/auth', authRoutes);
 app.use('/users', userRoutes);
+app.use('/api/food', foodRoutes);
+app.use('/api/cartfood', cartfoodRoutes);
 
 // Error handler middleware
 app.use((err, req, res, next) => {
