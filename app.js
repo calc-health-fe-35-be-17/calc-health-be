@@ -10,7 +10,7 @@ const { sequelize } = require('./models'); // Import the sequelize instance
 app.use(express.json());
 
 // allow origin
-app.use(cors(corsOptions));
+app.use(cors());
 
 // Routes
 app.use('/auth', authRoutes);
