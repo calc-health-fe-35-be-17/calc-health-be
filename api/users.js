@@ -47,4 +47,36 @@ router.get('/', async (req, res) => {
   }
 });
 
+// PUT /api/user/:id
+router.put('/:id', async (req, res) => {
+  const { id } = req.params;
+  const { nama, email, password, gender, berat, tinggi, umur, isAdmin } = req.body;
+
+  try {
+    // Check if the user exists
+    const user = await User.findByPk(id);
+    if (!user) {
+      return res.status(404).json({ error: 'User not found' });
+    }
+
+    // Update the user
+    user.nama = nama;
+    user.email = email;
+    user.password = password;
+    user.gender = gender;
+    user.berat = berat;
+    user.tinggi = tinggi;
+    user.umur = umur;
+
+    // Save the changes to the database
+    await user.save();
+
+    res.json(user);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Server error' });
+  }
+});
+
+
 module.exports = router;
