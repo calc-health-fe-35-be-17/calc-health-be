@@ -6,11 +6,12 @@ const authRoutes = require('./api/auth');
 const userRoutes = require('./api/users');
 const foodRoutes = require('./api/food');
 const cartfoodRoutes = require('./api/cartfood');
+const path = require ('path');
 const { sequelize } = require('./models'); // Import the sequelize instance
 
 // Middleware
 app.use(express.json());
-
+app.use(express.static(path.join(__dirname, 'uploads')));
 // allow origin
 app.use(cors(corsOptions));
 
