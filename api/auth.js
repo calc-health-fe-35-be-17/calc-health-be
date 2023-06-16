@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 const jwt = require('jsonwebtoken');
 const { User } = require('../models'); // Import the User model
+const cors= require('cors');
+const corsOptions= require('../cors/cors-option');
 
 // Login
 router.post('/login', async (req, res) => {
@@ -10,11 +12,11 @@ router.post('/login', async (req, res) => {
   try {
     const user = await User.findOne({ where: { email } });
     if (!user) {
-      return res.status(404).json({ error: 'User not found' });
+      return res.status(404).json({ error: 'Invalid email' });
     }
 
     if (user.password !== password) {
-      return res.status(401).json({ error: 'Invalid credentials' });
+      return res.status(401).json({ error: 'Invalid Password' });
     }
 
     const token = jwt.sign({ id: user.id }, 'secretkey123');
@@ -28,10 +30,10 @@ router.post('/login', async (req, res) => {
 // Register
 router.post('/register', async (req, res) => {
   try {
-    const { nama, email, password, gender, berat, tinggi, umur, isAdmin } = req.body;
+    const { nama_depan, nama_belakang, email, password, gender, berat, tinggi, umur, isAdmin } = req.body;
 
     // Create a new user
-    const user = await User.create({ nama, email, password, gender, berat, tinggi, umur, isAdmin });
+    const user = await User.create({ nama_depan, nama_belakang, email, password, gender, berat, tinggi, umur, isAdmin });
 
     res.status(201).json({ user });
   } catch (error) {

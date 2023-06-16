@@ -1,15 +1,25 @@
 const express = require('express');
 const app = express();
+const cors = require('cors');
+const corsOptions = require('./cors/cors-option');
 const authRoutes = require('./api/auth');
 const userRoutes = require('./api/users');
+const foodRoutes = require('./api/food');
+const cartfoodRoutes = require('./api/cartfood');
+const path = require ('path');
 const { sequelize } = require('./models'); // Import the sequelize instance
 
 // Middleware
 app.use(express.json());
+app.use(express.static(path.join(__dirname, 'uploads')));
+// allow origin
+app.use(cors(corsOptions));
 
 // Routes
 app.use('/auth', authRoutes);
 app.use('/users', userRoutes);
+app.use('/api/food', foodRoutes);
+app.use('/api/cartfood', cartfoodRoutes);
 
 // Error handler middleware
 app.use((err, req, res, next) => {
