@@ -33,7 +33,7 @@ router.get('/:id', async (req, res) => {
 
 // POST /api/food
 router.post('/', upload.single('picture'), async (req, res) => {
-        const { name, calorie, carbon, carbohydrates, protein, fat } = req.body;
+        const { name, calorie, carbon, carbohydrates, protein, fat, description } = req.body;
         const picture = req.file;
       
         try {
