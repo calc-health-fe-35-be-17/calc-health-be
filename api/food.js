@@ -44,7 +44,7 @@ router.post('/', upload.single('picture'), async (req, res) => {
           }
       
           // Create the food item in the database
-          const food = await Food.create({ name, calorie, carbon, picture: picture.filenamem, description });
+          const food = await Food.create({ name, calorie, carbon, carbohydrates, protein, fat, picture: picture.filenamem, description });
           res.status(201).json(food);
         }  catch (error) {
             console.error(error); // Log the error for debugging
